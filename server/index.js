@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import morgan from "morgan";
 
 //Routes
 import AuthRoute from "./Routes/AuthRoute.js";
@@ -17,7 +18,7 @@ const app = express();
 //to serve images for public
 app.use(express.static("public"));
 app.use("/images", express.static("images"));
-
+app.use(morgan("dev"));
 //Middleware
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
